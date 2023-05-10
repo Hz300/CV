@@ -225,3 +225,111 @@ h3{
       }
     }
   }
+@media (max-width: 767px) {
+  .container {
+    height: auto;
+    padding: 5%;
+  }
+  
+  .content {
+    width: 100%;
+    padding: 5%;
+  }
+  
+  .foto_perfil {
+    width: 100%;
+    float: none;
+    margin-bottom: 2rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  .paragraph {
+    flex-direction: column;
+    padding-left: 0;
+  }
+  
+  #skills {
+    width: 100%;
+    margin: 2em 0;
+  }
+  
+  .project_obj {
+    width: 100%;
+    margin-bottom: 2em
+    }
+    
+    @media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    height: auto;
+    padding: 5%;
+  }
+  
+  .content {
+    width: 100%;
+    padding: 5%;
+  }
+  
+  .foto_perfil {
+    width: 50%;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  .paragraph {
+    flex-direction: column;
+    padding-left: 0;
+  }
+  
+  #skills {
+    width: 100%;
+    margin: 2em 0;
+  }
+  
+  .project_obj {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+}
+    
+   @media (min-width: 1024px) {
+  .container {
+    height: 100vh;
+    padding: 0;
+  }
+  
+  .content {
+    width: 80%;
+    padding: 2%;
+  }
+  
+  .foto_perfil {
+    width: 25vw;
+    float: right;
+  }
+  
+  .buttons {
+    flex-direction: row;
+    margin: 0 10% 0 10%;
+  }
+  
+  .paragraph {
+    padding-left: 3vw;
+  }
+  
+  #skills {
+    width: 55%;
+    margin: 4em 0 4em 0;
+  }
+  
+  .project_obj {
+    width: 20vw;
+    margin-bottom: 0;
+  }
+}
