@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calculator.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Java Script Calculator</h1>
+   <div class="container">
+    <div class="content">
+        <div class="top">
+            <div class="result">
+            </div>
+        </div>
+        <div class="middle">
+            <div class="operators" id="add">+</div>
+            <div class="operators" id="minus">-</div>
+            <div class="operators" id="multiply">*</div>
+            <div class="operators" id="between">/</div>
+            <div class="operators" id="equal">=</div>
+        </div>
+         <div class="bottom">
+             <div class="number" id="one">1</div>
+             <div class="number" id="two">2</div>
+             <div class="number" id="three">3</div>
+             <div class="number" id="four">4</div>
+             <div class="number" id="five">5</div>
+             <div class="number" id="six">6</div>
+             <div class="number" id="seven">7</div>
+             <div class="number" id="eight">8</div>
+             <div class="number" id="nine">9</div>
+             <div class="number" id="zero">0</div>
+        </div>   
+        <div class="extra">
+            <div class="deleters">Clear All</div>
+            <div class="deleters">Del prev</div>
+        </div>
+    </div>
+   </div>  
+</body>
+<script>
+    //saber el valor que muestra el display
+    const result = document.querySelector(".result");
+    //obtener todos los numeros
+    const numbers = document.querySelectorAll(".number");
+    //obtener los operadores
+    const operators = document.querySelectorAll(".operators");
+
+    //creo varaible para almacenar el resultado actual
+    let resultado_actual = 0;
+
+    //numeros : vamos a poner atencion en cada numero, a ver si se hace click
+    numbers.forEach(number => {
+        //cuando se hace click, el contendio de texto de resultado, se le va a añadir, el numero de la tecla con el clik
+        number.addEventListener("click", () =>{
+            result.textContent += number.textContent;
+        });
+    });
+
+    //operadore: poner atencion en los operadores por un click
+    operators.forEach(operator => {
+        operator.addEventListener("click", () =>{
+            //si recive click
+            let operator_text = operator.textContent;
+            if(operator_text === "="){
+                try{
+                    resultado_actual = eval(result.textContent);
+                    result.textContent = resultado_actual;
+                } catch (error){
+                    result.textContent = "Error";
+                }
+            } else{
+                result.textContent += operator_text;
+            }
+        })
+    })
+
+    //Delete all: event listener
+    const clearAll = document.querySelector('.deleters:nth-child(1)');
+    clearAll.addEventListener('click', () => {
+        //al hacer click se cambia tanto el valor de la varaible 
+        //calcualada como lo que se muestra en el el elemento result a 0
+        result.textContent = '';
+        currentResult = 0;
+    });
+
+    //delete previous
+    const delPrev = document.querySelector(".deleters:nth-child(2)");
+    delPrev.addEventListener("click", () =>{
+        //cambia el texto de result a una copia pero sin el ultimo elemento 
+        result.textContent = result.textContent.slice(0, -1);
+    });
+</script>
+</html>
