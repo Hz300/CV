@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Todo list</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Todo list</h1>
+            <div class="center">
+                <input type="text" class="inputTask" placeholder="Add a new task">
+                <button onclick="addTask()" id="submitTask" class="mainButton">Add task</button>
+            </div>
+            <ul class="tasks">
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    function addTask() {
+  // Obtener el elemento de entrada de texto y la lista de tareas
+  let input = document.querySelector(".inputTask")
+  let taskList = document.querySelector(".tasks")
+
+  // Verificar si el campo de entrada no está vacío
+  if (input.value !== "") {
+    // Crear un nuevo elemento de lista
+    let task = document.createElement("li");
+
+    //crear el check box
+    let check = document.createElement("input")
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "checkbox";
+
+    //crear boton para borrar
+    let deletIt = document.createElement("button")
+    deletIt.id = "remover";
+    deletIt.textContent = "Delete";
+    deletIt.className = "deleteIt";
+
+    // Crear un nodo de texto con el valor del campo de entrada
+    let taskText = document.createTextNode(input.value);
+    
+    // Agregar el nodo de texto al elemento de lista y el checbox
+    task.appendChild(checkbox);
+    task.appendChild(taskText);
+    task.appendChild(deletIt);
+
+    // Agregar el elemento de lista a la lista de tareas
+    taskList.appendChild(task);
+
+    // Limpiar el campo de entrada
+    input.value = "";
+
+    // Agregar un evento al elemento de lista para marcarlo como completado
+    task.addEventListener("click", function() {
+      task.classList.toggle("completed");
+    });
+    deletIt.addEventListener("click", () => {
+        let itemPadre = deletIt.parentNode;
+        let listaPadre = itemPadre.parentNode;
+        listaPadre.removeChild(itemPadre);
+    })
+  }
+}
+   
+</script>
+</html>
